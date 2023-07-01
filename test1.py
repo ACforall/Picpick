@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtWidgets import QFileDialog
-
+import src.func as f
 
 class Ui_MainWindow(object):
 
@@ -53,7 +53,7 @@ class Ui_MainWindow(object):
 
         #按钮关联函数
         self.input.clicked.connect(self.openImage)
-        self.pushButton_2.clicked.connect(self.startAction)
+        self.pushButton_2.clicked.connect(self.sktech)
         self.pushButton_3.clicked.connect(self.saveImage)
 
     def retranslateUi(self, MainWindow):
@@ -107,6 +107,11 @@ class Ui_MainWindow(object):
         # self.labelResult.setPixmap(QPixmap.fromImage(QImg).scaled(
         #     self.labelResult.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 
+        self.result.setPixmap(QPixmap.fromImage(QImg).scaled(self.result.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+
+
+    def sketch(self):
+        QImg=f.startAction(imgNamepath=imgNamepath)
         self.result.setPixmap(QPixmap.fromImage(QImg).scaled(self.result.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 
     def cvimg_to_qtimg(self,cvimg):
